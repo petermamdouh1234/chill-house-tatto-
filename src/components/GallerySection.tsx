@@ -3,31 +3,37 @@ import { Button } from './ui/button';
 import { ChevronLeft, ChevronRight, Eye } from 'lucide-react';
 
 // Import all tattoo images
-import tattoo1 from '@/assets/108.jpg';
-import tattoo2 from '@/assets/208.jpg';
-import tattoo3 from '@/assets/100.jpg';
-import tattoo4 from '@/assets/104.jpg';
+import tattoo1 from '@/assets/103.jpg';
+import tattoo2 from '@/assets/210.jpg';
+import tattoo3 from '@/assets/101.jpg';
+import tattoo4 from '@/assets/102.jpg';
 import tattoo5 from '@/assets/110.jpg';
 import tattoo6 from '@/assets/206.jpg';
-import tattoo7 from '@/assets/101.jpg';
-import tattoo8 from '@/assets/103.jpg';
+import tattoo7 from '@/assets/400.jpg';
+import tattoo8 from '@/assets/401.jpg';
 import tattoo9 from '@/assets/109.jpg';
-import tattoo10 from '@/assets/105.jpg';
-import tattoo11 from '@/assets/115.jpg';
+import tattoo10 from '@/assets/402.jpg';
+import tattoo11 from '@/assets/403.jpg';
 import tattoo12 from '@/assets/112.jpg';
 import tattoo13 from '@/assets/113.jpg';
 import tattoo14 from '@/assets/114.jpg';
 import tattoo15 from '@/assets/200.jpg';
-import tattoo16 from '@/assets/201.jpg';
-import tattoo17 from '@/assets/202.jpg';
+import tattoo16 from '@/assets/404.jpg';
+import tattoo17 from '@/assets/405.jpg';
 import tattoo18 from '@/assets/203.jpg';
 import tattoo19 from '@/assets/204.jpg';
 import tattoo20 from '@/assets/205.jpg';
 import tattoo21 from '@/assets/106.jpg';
 import tattoo22 from '@/assets/207.jpg';
-import tattoo23 from '@/assets/102.jpg';
+import tattoo23 from '@/assets/104.jpg';
 import tattoo24 from '@/assets/209.jpg';
-import tattoo25 from '@/assets/210.jpg';
+import tattoo25 from '@/assets/208.jpg';
+import tattoo26 from '@/assets/100.jpg';
+import tattoo27 from '@/assets/108.jpg';
+import tattoo28 from '@/assets/105.jpg';
+import tattoo29 from '@/assets/115.jpg';
+import tattoo30 from '@/assets/201.jpg';
+import tattoo31 from '@/assets/202.jpg';
 
 import Logo from "../assets/logo.png";
 
@@ -56,7 +62,13 @@ const tattooImages = [
   { src: tattoo22, alt: 'Anchor Nautical Tattoo' },
   { src: tattoo23, alt: 'Anchor Nautical Tattoo' },
   { src: tattoo24, alt: 'Anchor Nautical Tattoo' },
-  { src: tattoo25, alt: 'Koi Fish Tattoo' },
+  { src: tattoo25, alt: 'Anchor Nautical Tattoo' },
+  { src: tattoo26, alt: 'Anchor Nautical Tattoo' },
+  { src: tattoo27, alt: 'Anchor Nautical Tattoo' },
+  { src: tattoo28, alt: 'Anchor Nautical Tattoo' },
+  { src: tattoo29, alt: 'Anchor Nautical Tattoo' },
+  { src: tattoo30, alt: 'Anchor Nautical Tattoo' },
+  { src: tattoo31, alt: 'Koi Fish Tattoo' },
 ];
 
 const GallerySection = () => {
