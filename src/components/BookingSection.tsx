@@ -63,18 +63,26 @@ const handleSubmit = async (e: React.FormEvent) => {
     return;
   }
 
-  // ✅ WhatsApp number (owner's number, in international format without +)
+  // ✅ Show loading toast
+  toast({
+    title: "Uploading...",
+    description: formData.referenceImage
+      ? "Uploading your image and preparing WhatsApp message..."
+      : "Preparing your WhatsApp message...",
+  });
+
+  // ✅ Owner's WhatsApp number
   const phoneNumber = "201288744555";
 
-  // ✅ Upload image to Cloudinary if provided
+  // ✅ Upload image if provided
   let imageUrl = "";
   if (formData.referenceImage) {
-    const data = new FormData();
-    data.append("file", formData.referenceImage);
-    data.append("upload_preset", "unsigned_upload");
-    data.append("cloud_name", "dmj8mjqby");
-
     try {
+      const data = new FormData();
+      data.append("file", formData.referenceImage);
+      data.append("upload_preset", "unsigned_upload");
+      data.append("cloud_name", "dmj8mjqby");
+
       const res = await fetch(
         "https://api.cloudinary.com/v1_1/dmj8mjqby/image/upload",
         {
@@ -84,13 +92,28 @@ const handleSubmit = async (e: React.FormEvent) => {
       );
 
       const imgData = await res.json();
-      imageUrl = imgData.secure_url || "";
+      if (imgData.secure_url) {
+        imageUrl = imgData.secure_url;
+      } else {
+        toast({
+          title: "Image Upload Failed",
+          description: "Couldn't upload image. Please try again or proceed without an image.",
+          variant: "destructive",
+        });
+        return;
+      }
     } catch (err) {
       console.error("Image upload failed", err);
+      toast({
+        title: "Image Upload Error",
+        description: "Please check your connection and try again.",
+        variant: "destructive",
+      });
+      return;
     }
   }
 
-  // ✅ Pre-filled WhatsApp message
+  // ✅ Build the WhatsApp message
   const message = `
 📌 *New Tattoo Booking Request*
 
@@ -109,10 +132,10 @@ ${imageUrl ? `🖼️ Reference Image: ${imageUrl}` : ""}
     ? `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
     : `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
 
-  // ✅ Open WhatsApp with pre-filled message
+  // ✅ Open WhatsApp AFTER image upload completes
   window.open(whatsappUrl, "_blank");
 
-   // ✅ Show success toast
+  // ✅ Success toast
   toast({
     title: "Redirecting to WhatsApp...",
     description: "Your booking request will be sent via WhatsApp.",
@@ -132,6 +155,7 @@ ${imageUrl ? `🖼️ Reference Image: ${imageUrl}` : ""}
 
   setShowForm(false);
 };
+
 
 
   return (
